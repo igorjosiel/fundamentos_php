@@ -17,6 +17,21 @@
         $finalizado = false;
         $dataProjeto = "2024-10-11";
         $descricao = "Meu primeiro portifólio. Escrito em PHP e HTML.";
+
+        $projetos = [
+            [
+                "titulo" => "Meu Portifólio",
+                "finalizado" => false,
+                "data" => "2024-10-05",
+                "descricao" => "Meu primeiro portifólio. Escrito em PHP e HTML."
+            ],
+            [
+                "titulo" => "Lista de tarefas",
+                "finalizado" => true,
+                "data" => "2024-05-11",
+                "descricao" => "Lista de tarefas. Escrito em PHP e HTML."
+            ],
+        ];
     ?>
 
     <h1><?=$titulo?></h1>
@@ -26,26 +41,30 @@
 
     <hr/>
 
-    <div
-        <?php if((2024 - $ano) > 2): ?>
-            style="background-color: burlywood;"
-        <?php endif; ?>
-    >
-        <h2><?=$projeto?></h2>
-
-        <p><?=$descricao?></p>
-        
-        <div>
-            <div><?=$dataDoProjeto?></div>
-
-            <div>Projeto:
-                <?php if(!$finalizado): ?>
-                    <span style="color: red">Não finalizado</span>
-                <?php else: ?>
-                    <span style="color: green">Finalizado</span>
+    <ul>
+        <?php foreach ($projetos as $projeto): ?>
+            <div
+                <?php if((2024 - $ano) > 2): ?>
+                    style="background-color: burlywood;"
                 <?php endif; ?>
+            >
+                <h2><?=$projeto['titulo']?></h2>
+
+                <p><?=$projeto['descricao']?></p>
+                
+                <div>
+                    <div><?=$projeto['data']?></div>
+
+                    <div>Projeto:
+                        <?php if(!$projeto['finalizado']): ?>
+                            <span style="color: red">Não finalizado</span>
+                        <?php else: ?>
+                            <span style="color: green">Finalizado</span>
+                        <?php endif; ?>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+        <?php endforeach; ?>
+    </ul>
 </body>
 </html>
